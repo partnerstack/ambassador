@@ -166,7 +166,7 @@ class DiagApp (Flask):
 
         # This feels like overkill.
         self.logger = logging.getLogger("ambassador.diagd")
-        self.logger.setLevel(logging.INFO)
+        self.logger.setLevel(os.environ.get("APP_LOG_LEVEL", logging.INFO))
 
         # Initialize the Envoy stats manager...
         self.estatsmgr = EnvoyStatsMgr(self.logger)
